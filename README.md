@@ -20,6 +20,7 @@ const twAddress = new TWAddress(109);
  * To get road list.
  * First argument is county, required.
  * Second argument is town, required.
+ * @type {Promise}
  */
 twAddress.getRoadList('臺北市', '中正區')
   .then(roads => {
@@ -36,6 +37,7 @@ twAddress.getRoadList('臺北市', '中正區')
  * First argument is county, optional.
  * Second argument is town, optional.
  * Third argument is page, optional, default: 1.
+ * @type {Promise}
  */
 twAddress.getAPI('臺北市', '中正區', 1)
   .then(resp => {
