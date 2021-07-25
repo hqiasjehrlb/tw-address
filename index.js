@@ -8,6 +8,7 @@ const { APICall, RequestError } = require('./lib/roadsAPI');
 const defaultAPIUrl = 'https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP049';
 
 class TWAddress {
+  static get APIURL () { return defaultAPIUrl; }
   static get RequestError () { return RequestError; }
   static get InvalidCountyError () { return InvalidCountyError; }
 
@@ -27,13 +28,25 @@ class TWAddress {
   }
 
   /**
+   * @param {string} [county] 
+   * @param {string} [town] 
+   * @param {string|number} [page] 
+   */
+  getAPI (county, town, page) {
+    return APICall(this.url, this.year, county, town, page);
+  }
+
+  /**
    * @param {string} county 
    * @param {string} town 
    */
   async getRoadList (county, town) {
-    const resp = await APICall(this.url, this.year, county, town);
-    const pages = parseInt(resp.data.totalPage, 10);
-    const list = resp.data.responseData.map(d => d.road);
+    if (!county || !town) {
+      throw new Error('county and town are required arguments in this method.');
+    }
+    const resp = await this.getAPI(county, town);
+    const pages = parseInt(resp.data.totalPage, 10) || 1;
+    const list = (resp.data.responseData || []).map(d => d.road);
     const pagesArr = [];
     for (let i = 2; i <= pages; i++) {
       pagesArr.push(i);
