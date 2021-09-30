@@ -11,10 +11,10 @@ const TWAddress = require('tw-address');
 
 /**
  * Create new instance.
- * First argument is ROC year. Available values are 107, 108, 109, optional, default value: CURRENT_ROC_YEAR
+ * First argument is ROC year. Available values are 107, 108, 109, 110, optional, default value: CURRENT_ROC_YEAR
  * Second argument is API base url, optional, default: https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP049
  */
-const twAddress = new TWAddress(109);
+const twAddress = new TWAddress(110);
 
 /**
  * To get road list.
@@ -65,4 +65,6 @@ const towns = TWAddress.getTownList(county);
 # References
 [Taiwan District Data](https://gist.githubusercontent.com/abc873693/2804e64324eaaf26515281710e1792df/raw/a1e1fc17d04b47c564bbd9dba0d59a6a325ec7c1/taiwan_districts.json)
 
-[Taiwan Roads Opendata](https://www.ris.gov.tw/rs-opendata/api/Main/docs/v1)
+[Taiwan Roads Opendata Documentation](https://www.ris.gov.tw/rs-opendata/api/Main/docs/v1)
+
+[Taiwan Roads Opendata Information](https://data.gov.tw/dataset/35321)
