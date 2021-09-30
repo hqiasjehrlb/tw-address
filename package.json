@@ -1,6 +1,6 @@
 {
   "name": "tw-address",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "TW road list by gov open data",
   "main": "index.js",
   "scripts": {
